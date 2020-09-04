@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+ document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, options);
+  });
+
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apple": null,
+        "Microsoft": null,
+        "Google": 'https://placehold.it/250x250'
+      },
+    });
+  });
+
+
+{% block content %}
+    {#    {% if search %}#}
+    <form class="container" action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">search</i>
+                    <input type="text" id="autocomplete-input" name="search" class="autocomplete">
+                    {#data-target="autocomplete-options-65bb8ca5-6940-c49c-4c90-2c3df992cb20"><ul id="autocomplete-options-65bb8ca5-6940-c49c-4c90-2c3df992cb20" class="autocomplete-content dropdown-content" tabindex="0" style=""></ul>#}
+                    <label for="autocomplete-input" class="active">Search Here</label>
+                </div>
+                <span>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                    <i class="material-icons right">search</i>
+                </button>
+                    </span>
+            </div>
+        </div>
+    </form>
+    {#    {% endif %}#}
+
+
+{% endblock content %}
