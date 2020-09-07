@@ -9,32 +9,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/myApp/myApp.js' %}"></script>
 </head>
 <body>
+{# navbar #}
 <nav>
-    <div class="container nav-wrapper">
-        <a href="/" class="brand-logo">Somdip Django</a>
-        <ul id="nav-mobile" class="right">
-            <li><a href="{% url 'home' %}">Home</a></li>
-        </ul>
-        <ul id="nav-mobile" class="right">
-            <li><a href="{% url 'search' %}">Search by Country</a></li>
-        </ul>
+    <div class="container">
+        <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Corona Live Update</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'search' %}">Search</a></li>
+      </ul>
     </div>
-</nav>
+    </div>
+
+  </nav>
 <div class="container">
-    <h1 style="text-align: center">Coronavirus Status</h1>
+    <h1 style="text-align: center"><u>Coronavirus Status</u></h1>
     <div class="row">
         <div class="col s4">
             <div class="card">
                 <div class="card-image">
-                    <h5 class="text">Total Cases</h5>
+                    <h5 class="text ">Total Cases</h5>
                 </div>
                 <div class="card-content">
-                    <h6 class="count">{{ total_case|intcomma }}</h6>
+                    <h6 class="count">{{ total_case }}</h6>
                 </div>
             </div>
         </div>
@@ -44,7 +47,7 @@
                     <h5 class="text">Total Deaths</h5>
                 </div>
                 <div class="card-content">
-                    <h6 class="count">{{ total_death|intcomma }}</h6>
+                    <h6 class="count">{{ total_death }}</h6>
                 </div>
             </div>
         </div>
@@ -54,15 +57,47 @@
                     <h5 class="text">Recovered </h5>
                 </div>
                 <div class="card-content">
-                    <h6 class="count">{{ total_recovered|intcomma }}</h6>
+                    <h6 class="count">{{ total_recovered }}</h6>
                 </div>
             </div>
         </div>
-
     </div>
     {% block content %}     {% endblock content %}
 </div>
+
+{# footer #}
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Address</h5>
+                <p class="grey-text text-lighten-4">374 William S Canning Blvd, Fall River MA 2721</p>
+                <h5>Whats-App No </h5>
+                 <p class="grey-text text-lighten-4">+1 48 9465 1612</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Contact Us</h5>
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                    <li><a href="#" class="fa fa-google"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-skype"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+             <p class="grey-text text-lighten-4 center">Made with <i class="material-icons">favorite</i></p>
+            <p style="text-align: center">Copyright © Somdip Sen 2020</p>
+        </div>
+    </div>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>
 
